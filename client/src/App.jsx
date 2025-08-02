@@ -5,10 +5,14 @@ import {
   RouterProvider
 } from "react-router-dom";
 
+//Pages
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Single from "./pages/Single";
+import Write from "./pages/Write";
+
+//Components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import "./style.scss";
@@ -36,6 +40,10 @@ const router = createBrowserRouter([
         path: "/post/:id",
         element: <Single/>
       },
+      {
+        path: "/write",
+        element: <Write/>
+      }
     ]
   },
   {
