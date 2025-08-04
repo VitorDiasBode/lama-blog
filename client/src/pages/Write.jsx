@@ -61,10 +61,6 @@ function Write() {
                         <input type="radio" name="cat" id="food" value="food" />
                         <label htmlFor='food'>Food</label>
                     </div>
-                    <div className="cat">
-                        <input type="radio" name="cat" id="science" value="science" />
-                        <label htmlFor='science'>Science</label>
-                    </div>
                 </div>
 
             </div>
