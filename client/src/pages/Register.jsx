@@ -1,14 +1,17 @@
 import React from 'react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 function Register() {
+  const navigate = useNavigate()
   const [inputs, setInputs] = useState({
     username:'',
     email:'',
     password:''
   });
+
+  const [error, setError] = useState(null);
 
   const handleInputChange = (e) =>{
     setInputs((prev) => ({...prev, [e.target.name]:e.target.value}))
@@ -18,10 +21,10 @@ function Register() {
     e.preventDefault();
     try {
       const res = await axios.post('api/auth/register', inputs);
-      // const res = await axios.get('/api/auth/test');
-    } catch (error) {
-      console.log(error)
-    }
+      navigate("/login");
+    } catch (err) {
+      setError(err.response.data);
+    } 
     
   }
 
@@ -34,7 +37,7 @@ function Register() {
         <input required type='email' placeholder='email'name='email' onChange={handleInputChange} />
         <input required type="password" placeholder='password' name='password' onChange={handleInputChange} />
         <button onClick={handleSubmit}>Register</button>
-        <p>Erro!</p>
+        {error && <p>{error}</p>}
         <span>Do you have an account? <br/><Link to="/login">Login</Link>
         </span>
       </form>  
