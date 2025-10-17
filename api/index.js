@@ -8,7 +8,6 @@ app.use(json() );
 app.use('/api/posts', postRoutes);
 app.use('/api/auth', authRoutes)
 
-
 app.listen(8800, ()=>{
     console.log("Connected!");
 });
