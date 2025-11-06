@@ -43,11 +43,16 @@ export const login = (req, res) =>{
         const token = jwt.sign({id:data[0].id}, "jwtkey");
         const {password, ...other} = data[0];
 
-        res.cookie("acess_token", token, {
+        res.cookie("access_token", token, {
             httpOnly:true
         }).status(200).json(other);
 
 
     })
 }
-export const logout = (req, res) =>{}
+export const logout = (req, res) =>{
+    res.clearCookie("access_token", {
+        sameSite:"none",
+        secure:true
+    }).status(200).json("User has been logged out.")
+}

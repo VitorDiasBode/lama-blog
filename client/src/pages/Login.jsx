@@ -1,32 +1,30 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { AuthContext } from '../context/authContext.jsx';
 
 function Login() {
-  const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     username:"",
     password:""
   })
-  const [error, SetError] = useState(null)
-
+  const [error, SetError] = useState(null);
+  const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
+  
   const handleInputChange = (e) => {
-    setInputs((prev) => ({...prev, [e.target.name]:e.target.value}));
+  setInputs((prev) => ({...prev, [e.target.name]:e.target.value}));
   }
 
   const handleSubmit = async(e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("api/auth/login", inputs)
+      await login(inputs)
       navigate("/")
     } catch (err) {
       SetError(err.response.data);
-      
     }
-    console.log(inputs);
   }
-
-
 
   return (
     <div className='auth'>

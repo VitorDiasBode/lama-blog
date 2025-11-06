@@ -8,6 +8,6 @@ route.get('/test', (req, res) => {
     res.json('Working!')
 })
 route.post('/login', login);
-route.post('logout', logout);
+route.post('/logout', logout);
 
 export default route
