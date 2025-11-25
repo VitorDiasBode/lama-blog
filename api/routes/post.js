@@ -1,8 +1,12 @@
 import express, { json } from 'express';
-import {addPost} from '../controllers/post.js'
+import {addPost, deletePost, getPost, getPosts, updatePost} from '../controllers/post.js'
 
-const route = express.Router()
+const route = express.Router();
 
-route.get('/test', addPost)
+route.get("/", getPosts);
+route.get("/:id", getPost );
+route.post("/ ", addPost);
+route.delete("/:id", deletePost);
+route.put("/:id", updatePost);
 
 export default route
