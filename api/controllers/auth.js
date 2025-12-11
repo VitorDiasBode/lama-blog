@@ -56,3 +56,12 @@ export const logout = (req, res) =>{
         secure:true
     }).status(200).json("User has been logged out.")
 }
+
+export const test = (req, res) =>{
+    const q = "SELECT * FROM users"
+    db.query(q, (err, data) =>{
+        if(err) return res.json(err)
+        return res.json(data)
+        
+    })
+}
