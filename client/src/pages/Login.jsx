@@ -13,7 +13,7 @@ function Login() {
   const { login } = useContext(AuthContext);
   
   const handleInputChange = (e) => {
-  setInputs((prev) => ({...prev, [e.target.name]:e.target.value}));
+    setInputs((prev) => ({...prev, [e.target.name]:e.target.value}));
   }
 
   const handleSubmit = async(e) => {
